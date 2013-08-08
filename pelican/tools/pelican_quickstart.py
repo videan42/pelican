@@ -73,12 +73,6 @@ def get_template(name, as_encoding='utf-8'):
 
 
 def makedirs(dirpath):
-    """ Makedirs ignoring errors
-
-    :param dirpath:
-        The path to the directory to create
-    """
-
     try:
         os.makedirs(dirpath)
     except OSError as e:
@@ -86,14 +80,6 @@ def makedirs(dirpath):
 
 
 def chmod(path, mode):
-    """ Chmod, ignoring errors
-
-    :param path:
-        Path to change the mode on
-    :param mode:
-        Mode to change
-    """
-
     try:
         os.chmod(path, mode)
     except OSError as e:
@@ -101,16 +87,6 @@ def chmod(path, mode):
 
 
 def make_template(filepath, conf, as_encoding='utf-8'):
-    """ Make a template in the output dir
-
-    :param filepath:
-        The path to the output file
-    :param conf:
-        The dictionary of config parameters
-    :param as_encoding:
-        The file encoding to write (default: 'utf-8')
-    """
-
     try:
         with codecs.open(filepath, 'w', as_encoding) as fd:
             filename = os.path.basename(filepath)
@@ -123,14 +99,6 @@ def make_template(filepath, conf, as_encoding='utf-8'):
 
 
 def escape_shell(conf):
-    """ Shell escape the keys in the config
-
-    :param conf:
-        The config dictionary
-    :returns:
-        A copy of the dictionary with strings escaped
-    """
-
     new_conf = {}
     for key, value in conf.items():
         if isinstance(value, six.string_types) and ' ' in value:
@@ -214,12 +182,6 @@ def ask(question, answer=str_compat, default=None, l=None):
 
 
 def quickstart(conf, automation=True, develop=True):
-    """ Generate the templates
-
-    :param conf:
-        The config to generate the templates with
-    """
-
     if six.PY3:
         python_binary = 'python3'
     else:
